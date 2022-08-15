@@ -1,41 +1,42 @@
-Tutorial: Regex matching Hex value
-Regular expressions are patterns used to match character combinations in strings. In a regular expression the metacharacter ^ means "not". So, while "a" means "match lowercase a", "^a" means "do not match lowercase a".
+Regex Tutorial on Matching an Email
+Regular expressions can be used to find certain patterns of characters within a string. You can also find and replace a character or sequence of characters within a string. They are also frequently used to validate input. This regex matches character information for valid e-mail addresses.
 
 Summary
-Today I will be covering and breaking down the components of a regular expression used to match Hex Values. Hexadecimal code is a system by which any specific color can be described accurately to a computer, ensuring consistency and accuracy in an electronic display. A hexadecimal color value is a six-digit code preceded by a # sign; it defines a color that is used in a website or a computer program. /^#?([a-f0-9]{6}|[a-f0-9]{3})$/
+This is the regex code that we will be anaylizing today is: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 
 Table of Contents
 Anchors
 Quantifiers
-OR Operator
 Character Classes
+Grouping and Capturing
 Bracket Expressions
 Greedy and Lazy Match
 Regex Components
 Anchors
-/^#?([a-f0-9]{6}|[a-f0-9]{3})$/
-Anchors are a different breed. They do not match any character at all. Instead, they match a position before, after, or between characters. They can be used to “anchor” the regex match at a certain position. The caret ^ matches the position before the first character in the string. Applying ^a to abc matches a. ^b does not match abc at all, because the b cannot be matched right after the start of the string, matched by ^. See below for the inside view of the regex engine. Similarly, $ matches right after the last character in the string. c$ matches c in abc, while a$ does not match at all.
+The anchors used to contain this regular expression are: ^ to start, and $ to finish.
 
 Quantifiers
-/^#?([a-f0-9]{6}|[a-f0-9]{3})$/
-Quantifiers are used to communicate how many characters are expected. Quantifiers specify how many instances of a character, group, or character class must be present in the input for a match to be found. By default, quantifiers are greedy, and will match as many characters as possible. If the ",+,?,{}" characters are found within regular expressions, they are considered quantifiers. The ? indicates the expression to match 0 or 1time. As mentioned in the summary above because there are 2 types of formats we'll use the or operator to distinguish which format we are using. In our Hex Value regular expression we have {6} (Hex Triplet Format) and {3} (Shorthand Hex Format), this indicates that the length of the component preceding these quantifiers should be 6 for {6} and 3 for {3}.
-
-OR Operator
-/^#?([a-f0-9]{6}|[a-f0-9]{3})$/
-The "or" operator within a regular expression is defined using the | element. The or operator indicates that it could either of the components that we are separating with the |. For our hex value regular expression we have ([a-f0-9]{6}``|``[a-f0-9]{3}). Note the or operator separating these 2 components. This means that our hex value could either be 6 characters [a-f0-9]{6} or 3 characters [a-f0-9]{3}.
+In this example, we used + to communicate there is another sequence to be matched as a greedy quantifier. We also used {2,6} as another greedy quantifer to specify the input should be a minimum of 2 characrtors to a maximum of 6 characters.
 
 Character Classes
-/^#?([a-f0-9]{6}|[a-f0-9]{3})$/
-Character classes are components within our regular expression that tells us what type of characters to expect. In our example our character classes are confined within brackets []. For our example we have 2 character classes: [a-f0-9] and [a-f0-9] which searches for the same values. We will be breaking down what the characters are searching within these character classes. a-f searches for letters a-f and 0-9 searches for digits 0-9.
+In this regular expression, the charactor class /d is used which in Javasctipt classifies the use of any digit from 0 to 9.
+
+Grouping and Capturing
+There are three groups being captured in this example. Group #1 is the username of the e-mail account [a-z0-9_\.-]. The second group captures the domain name or e-mail service being used [\da-z\.-]. Lastly, the third group captures the domain extention (i.e .com or .net) [a-z\.]{2,6}
 
 Bracket Expressions
-/^#?([a-f0-9]{6}|[a-f0-9]{3})$/
-Matches any character in the square brackets. For example [nN] [oO] matches no, nO, No, and NO. gr[ae]y matches both spellings of the word 'grey'; that is, gray and grey.
+Much like the groups in this example, there are also 3 bracket expressions. The information in the bracket expressions is opened and closed between brackets like this []. This indentifies which information is allowed to be matched.
+
+Bracket Expression #1: [a-z0-9_\.-] - includes case sensitive characters from a-z, numbers from 0-9 an underscore, periods and hyphens.
+
+Bracket Expression #2: [\da-z\.-] - includes all digits, case sensitive characters from a-z, periods and hyphens
+
+Bracket Expression #3: [a-z\.] - includes case sensitive characters from a-z and periods.
 
 Greedy and Lazy Match
-/^#?([a-f0-9]{6}|[a-f0-9]{3})$/
-A greedy match tries to match an element as many times as possible. Whereas, a lazy match tries to match an element as few times as possible. In our example we have ? which signifies lazy quantifier. This is referred to a lazy quantifier because it causes the regular expression engine to match as few occurances as possible. We can simply turn this lazy match into a greedy one by adding a ?.
+In this example we have only used greedy quantifiers + and {}, meaning that it will allow the match to expand as long as it neess to go. If these quantifiers were lazy quantifiers, they would appear as +? or {}?, this will direct the system to make the shortest match.
 
 Author
-Hi I'm Bryce Poole, I'm a full-stack developer student.
-GitHub: Bpoole83
+My name is Allen Lovatt, and I finally feel like a coder!
+
+Here is my github repository: https://github.com/alovatt83
