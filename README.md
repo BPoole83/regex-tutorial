@@ -37,5 +37,5 @@ Greedy and Lazy Match
 A greedy match tries to match an element as many times as possible. Whereas, a lazy match tries to match an element as few times as possible. In our example we have ? which signifies lazy quantifier. This is referred to a lazy quantifier because it causes the regular expression engine to match as few occurances as possible. We can simply turn this lazy match into a greedy one by adding a ?.
 
 Author
-Hi I'm Eric Enriquez, I'm a full-stack developer student.
+Hi I'm Bryce Poole, I'm a full-stack developer student.
 GitHub: Bpoole83
